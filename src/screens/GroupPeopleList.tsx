@@ -11,14 +11,14 @@ interface Props {
 type DebtInfoScreenProp = NativeStackNavigationProp<RouterParamList, 'DebtInfo'>;
 type RouteProps = RouteProp<RouterParamList, 'DebtInfo'>;
 
-export const DebtInfo: React.FC<Props> = ({  }) => {
+export const GroupPeopleList: React.FC<Props> = ({  }) => {
 
     const navigation = useNavigation<DebtInfoScreenProp>()
     const route = useRoute<RouteProps>();
 
     return (
         <View style={styles.container}>
-          <Text>{route.params.debt.name}</Text>
+          <Text>GroupPeopleList</Text>
         </View>
     );
 }
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default DebtInfo;
+export default GroupPeopleList;

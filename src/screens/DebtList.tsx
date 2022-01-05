@@ -1,15 +1,15 @@
 import React from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { DebtRouterStackParamList } from '../navigations/types';
+import { RouterParamList } from '../navigations/types';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import AddBtn from '../components/AddBtn';
 import DebtItem from '../components/DebtItem';
 import { Debt } from '../types/types';
 
 
-type Props = NativeStackNavigationProp<DebtRouterStackParamList, 'Debt'>;
-type RouteProps = RouteProp<DebtRouterStackParamList, 'Debt'>;
+type Props = NativeStackNavigationProp<RouterParamList, 'Debt'>;
+type RouteProps = RouteProp<RouterParamList, 'Debt'>;
 
 export const DebtList: React.FC<Props> = ({  }) => {
 
