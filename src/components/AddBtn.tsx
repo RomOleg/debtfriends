@@ -23,10 +23,10 @@ const styles = StyleSheet.create({
         right: 35,
         bottom: 35,
         borderRadius: 50,
-        backgroundColor: '#fff',
+        backgroundColor: '#f89',
         zIndex: 9999,
-        width: 70,
-        height: 70,
+        width: 60,
+        height: 60,
     },
     btn: {
         padding: 10,

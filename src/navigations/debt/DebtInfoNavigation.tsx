@@ -10,7 +10,7 @@ const DebtInfoNavigation = () => {
 
   return (
       <Tab.Navigator>
-        <Tab.Screen name={"MeDebt"} component = { DebtInfo } />
+        <Tab.Screen name={"DebtInfo"} component = { DebtInfo } />
         <Tab.Screen name={"GroupPeopleList"} component = { GroupPeopleList } />
       </Tab.Navigator>
     )

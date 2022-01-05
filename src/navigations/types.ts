@@ -1,9 +1,9 @@
 import { Debt } from "../types/types";
 
 export type RouterParamList = {
-    Debt: undefined,
+    DebtList: undefined,
     DebtInfo: {debt: Debt},
 
-    MeDebt: undefined,
+    DebtInfoNavigation: undefined,
     GroupPeopleList: undefined,
 }
