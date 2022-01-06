@@ -18,9 +18,11 @@ export const DebtItem: React.FC<Props> = ({ debt, goto }) => {
 
 const styles = StyleSheet.create({
     itemDebt: {
-        paddingHorizontal: 20,
-        paddingVertical: 20,
         fontSize: 18,
+        paddingVertical: 15,
+        paddingHorizontal: 20,
+        backgroundColor: '#fff',
+        marginBottom: 1
     }
 })
 
