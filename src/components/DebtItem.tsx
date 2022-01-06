@@ -1,10 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Debt } from '../types/types';
+import { TypeDebt } from '../types/types';
 
 interface Props {
-    debt: Debt,
-    goto: (debt: Debt) => void,
+    debt: TypeDebt,
+    goto: (debt: TypeDebt) => void,
 }
 
 export const DebtItem: React.FC<Props> = ({ debt, goto }) => {

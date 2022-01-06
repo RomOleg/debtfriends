@@ -1,9 +1,7 @@
-import { Debt } from "../types/types";
+import { TypeDebt } from "../types/types";
 
-export type RouterParamList = {
+export type DebtNavigationStackRouterParamList = {
     DebtList: undefined,
-    DebtInfo: {debt: Debt},
-
-    DebtInfoNavigation: undefined,
+    DebtInfo: {debt: TypeDebt},
     GroupPeopleList: undefined,
 }

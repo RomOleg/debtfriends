@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, TouchableOpacityBase, View } from 'react-native';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
-import { RouterParamList } from '../navigations/types';
+import { DebtNavigationStackRouterParamList } from '../navigations/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { TypeDebtInfo } from '../types/types';
 
@@ -9,8 +9,8 @@ interface Props {
 
 }
 
-type DebtInfoScreenProp = NativeStackNavigationProp<RouterParamList, 'DebtInfo'>;
-type RouteProps = RouteProp<RouterParamList, 'DebtInfo'>;
+type DebtInfoScreenProp = NativeStackNavigationProp<DebtNavigationStackRouterParamList, 'DebtInfo'>;
+type RouteProps = RouteProp<DebtNavigationStackRouterParamList, 'DebtInfo'>;
 
 export const DebtInfo: React.FC<Props> = ({ }) => {
 

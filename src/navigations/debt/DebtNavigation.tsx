@@ -2,12 +2,12 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DebtList from '../../screens/DebtList';
 import DebtInfo from '../../screens/DebtInfo';
-import { RouterParamList } from '../types';
+import { DebtNavigationStackRouterParamList } from '../types';
 import GroupPeopleList from '../../screens/GroupPeopleList';
 
 const DebtNavigation = () => {
   
-  const Stack = createNativeStackNavigator<RouterParamList>();
+  const Stack = createNativeStackNavigator<DebtNavigationStackRouterParamList>();
 
   return (
       <Stack.Navigator>
