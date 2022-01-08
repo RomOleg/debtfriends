@@ -18,8 +18,6 @@ export const CreateGroupModal: React.FC<Props> = ({ visible, closeModal }) => {
       animationType="fade"
       transparent={true}
       visible={visible}
-      onRequestClose={() => {
-      }}
     >
       <View style={styles.modalContainer}>
         <View style={{ flex: 1, justifyContent: 'space-between', }} >
