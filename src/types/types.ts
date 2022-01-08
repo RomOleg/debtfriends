@@ -1,8 +1,12 @@
 export interface TypeDebt {
-    id: string,
+    id: number,
     name: string,
     sum: number,
     people: number,
+}
+
+export interface TypeFriend {
+    name: string,
 }
 
 export interface TypeDebtInfo {

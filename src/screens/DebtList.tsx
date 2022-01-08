@@ -9,8 +9,7 @@ import AddBtn from '../components/AddBtn';
 import DebtItem from '../components/DebtItem';
 import { TypeDebt } from '../types/types';
 import CreateGroupModal from './modals/CreateGroupModal';
-import { addDebt, delDebt } from '../store/actions/debtActions';
-import { showDebtModal, hideDebtModal } from '../store/actions/debtModalActions';
+import { showDebtModal } from '../store/actions/visibleActions';
 
 interface Props {
     debts: TypeDebt[],
@@ -25,14 +24,8 @@ export const DebtList: React.FC<Props> = ({ debts, showDebtModal }) => {
     const navigation = useNavigation<NavigationProps>();
     const route = useRoute<RouteProps>();
 
-    // const [modalVisible, setModalVisible] = useState(false);
-
-    // const [debts, setDebts] = useState<TypeDebt[]>([
-
-    // ])
-
-    const goto = (debt: TypeDebt): void => {
-        navigation.navigate('DebtInfo', { debt });
+    const goto = (debtGroup: TypeDebt): void => {
+        navigation.navigate('DebtInfo', { debtGroup });
     }
 
     const addGroup = (): void => {
@@ -43,8 +36,8 @@ export const DebtList: React.FC<Props> = ({ debts, showDebtModal }) => {
         <View style={styles.container}>
             <ScrollView>
                 {debts.length > 0 &&
-                    debts.map(debt =>
-                        <DebtItem key={debt.id} debt={debt} goto={goto} />
+                    debts.map(debtGroup =>
+                        <DebtItem key={debtGroup.id} debtGroup={debtGroup} goto={goto} />
                     )
                 }
             </ScrollView>
@@ -62,11 +55,11 @@ const styles = StyleSheet.create({
 })
 
 const mapDispatchToProps = {
-    addDebt, delDebt, showDebtModal, hideDebtModal,
+    showDebtModal,
 }
 
 const mapStateToProps = (state: any) => ({
-    debts: state.debt,
+    debts: state.debts,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DebtList);

@@ -1,12 +1,12 @@
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { RouterParamList } from '../types';
+import { DebtNavigationStackRouterParamList } from '../types';
 import DebtInfo from '../../screens/DebtInfo';
 import GroupPeopleList from '../../screens/GroupPeopleList';
 
 const DebtInfoNavigation = () => {
   
-  const Tab = createMaterialTopTabNavigator<RouterParamList>();
+  const Tab = createMaterialTopTabNavigator<DebtNavigationStackRouterParamList>();
 
   return (
       <Tab.Navigator>

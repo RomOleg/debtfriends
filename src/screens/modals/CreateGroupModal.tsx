@@ -1,18 +1,34 @@
 import React, { useState } from 'react'
-import { Modal, StyleSheet, View, Text } from 'react-native';
+import { Modal, StyleSheet, View, Text, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import BaseButton from '../../components/BaseButton';
 import CloseBtnModal from '../../components/CloseBtnModal';
 import VerticalLine from '../../components/VirticalLine';
 import location from '../../location/location';
-import { showDebtModal, hideDebtModal } from '../../store/actions/debtModalActions';
+import { hideDebtModal } from '../../store/actions/visibleActions';
+import { addDebt } from '../../store/actions/debtActions';
+import { TypeDebt } from '../../types/types';
 
 interface Props {
   visible: boolean,
-  hideDebtModal: () => void
+  hideDebtModal: () => void,
+  addDebt: (debtGroup: TypeDebt[]) => void,
 }
 
-export const CreateGroupModal: React.FC<Props> = ({ visible, hideDebtModal }) => {
+export const CreateGroupModal: React.FC<Props> = ({ visible, hideDebtModal, addDebt }) => {
+
+  const [name, setName] = useState('');
+
+  const createGroup = (): void => {
+    const group: TypeDebt[] = [{
+      id:  new Date().getTime(),
+      name: 'test',
+      sum: 1000,
+      people: 2
+    }]
+
+    addDebt(group)
+  }
 
   return (
     <Modal
@@ -25,9 +41,18 @@ export const CreateGroupModal: React.FC<Props> = ({ visible, hideDebtModal }) =>
           <View style={{ flex: 1, alignItems :'center' }} >
             <Text style={styles.title} >{location['ru'].TitleGroup}</Text>
             <VerticalLine />
+            <View>
+              <Text>Название события</Text>
+              <TextInput
+                style={styles.textInput}
+                value={name}
+                onChangeText={(name) => setName(name)}
+                placeholder='Название события' 
+              />
+            </View>
           </View>
           <View style={{ }}>
-            <BaseButton onPress={() => { }} />
+            <BaseButton onPress={createGroup} />
           </View>
         </View>
         <CloseBtnModal closeModal={hideDebtModal} />
@@ -60,15 +85,22 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     paddingBottom: 5,
+  },
+  textInput: {
+    borderWidth: 1,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderColor: '#ccc',
+    borderRadius: 10
   }
 });
 
 const mapDispatchToProps = {
-  showDebtModal, hideDebtModal,
+  hideDebtModal, addDebt
 }
 
 const mapStateToProps = (state: any) => ({
-  visible: state.debtModal.visible,
+  visible: state.visible.visibleModal,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateGroupModal);
