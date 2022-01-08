@@ -1,5 +1,10 @@
-export const ADD_DEBT = 'DEBT/ADD_DEBT';
-export const DEL_DEBT = 'DEBT/DEL_DEBT';
+import { TypeDebt } from "../types/types";
 
-export const SHOW_MODAL_DEBTS = 'DEBT/SHOW_MODAL_DEBTS';
-export const HIDE_MODAL_DEBTS = 'DEBT/HIDE_MODAL_DEBTS';
+export interface DebtActions {
+    type: string,
+    payload: TypeDebt[],
+}
+
+export interface TypeModal {
+    visible: boolean,
+}

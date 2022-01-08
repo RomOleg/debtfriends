@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 import { Modal, StyleSheet, View, Text } from 'react-native';
+import { connect } from 'react-redux';
 import BaseButton from '../../components/BaseButton';
 import CloseBtnModal from '../../components/CloseBtnModal';
 import VerticalLine from '../../components/VirticalLine';
 import location from '../../location/location';
+import { showDebtModal, hideDebtModal } from '../../store/actions/debtModalActions';
 
 interface Props {
   visible: boolean,
-  closeModal: () => void,
+  hideDebtModal: () => void
 }
 
-export const CreateGroupModal: React.FC<Props> = ({ visible, closeModal }) => {
-
+export const CreateGroupModal: React.FC<Props> = ({ visible, hideDebtModal }) => {
 
   return (
     <Modal
@@ -29,7 +30,7 @@ export const CreateGroupModal: React.FC<Props> = ({ visible, closeModal }) => {
             <BaseButton onPress={() => { }} />
           </View>
         </View>
-        <CloseBtnModal closeModal={closeModal} />
+        <CloseBtnModal closeModal={hideDebtModal} />
       </View>
     </Modal>
   );
@@ -62,4 +63,12 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CreateGroupModal;
+const mapDispatchToProps = {
+  showDebtModal, hideDebtModal,
+}
+
+const mapStateToProps = (state: any) => ({
+  visible: state.debtModal.visible,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateGroupModal);

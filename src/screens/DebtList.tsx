@@ -3,25 +3,33 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { DebtNavigationStackRouterParamList } from '../navigations/types';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import { connect } from 'react-redux';
+
 import AddBtn from '../components/AddBtn';
 import DebtItem from '../components/DebtItem';
 import { TypeDebt } from '../types/types';
 import CreateGroupModal from './modals/CreateGroupModal';
+import { addDebt, delDebt } from '../store/actions/debtActions';
+import { showDebtModal, hideDebtModal } from '../store/actions/debtModalActions';
 
+interface Props {
+    debts: TypeDebt[],
+    showDebtModal: () => void,
+}
 
-type Props = NativeStackNavigationProp<DebtNavigationStackRouterParamList, 'DebtList'>;
+type NavigationProps = NativeStackNavigationProp<DebtNavigationStackRouterParamList, 'DebtList'>;
 type RouteProps = RouteProp<DebtNavigationStackRouterParamList, 'DebtList'>;
 
-export const DebtList: React.FC<Props> = ({  }) => {
+export const DebtList: React.FC<Props> = ({ debts, showDebtModal }) => {
 
-    const navigation = useNavigation<Props>();
+    const navigation = useNavigation<NavigationProps>();
     const route = useRoute<RouteProps>();
 
-    const [modalVisible, setModalVisible] = useState(false);
+    // const [modalVisible, setModalVisible] = useState(false);
 
-    const [debts, setDebts] = useState<TypeDebt[]>([
-        
-    ])
+    // const [debts, setDebts] = useState<TypeDebt[]>([
+
+    // ])
 
     const goto = (debt: TypeDebt): void => {
         navigation.navigate('DebtInfo', { debt });
@@ -36,12 +44,12 @@ export const DebtList: React.FC<Props> = ({  }) => {
             <ScrollView>
                 {debts.length > 0 &&
                     debts.map(debt =>
-                        <DebtItem key={debt.id} debt={debt} goto={goto}/>
+                        <DebtItem key={debt.id} debt={debt} goto={goto} />
                     )
                 }
             </ScrollView>
-            <AddBtn showModal={() => setModalVisible(true)} />
-            <CreateGroupModal visible={modalVisible} closeModal={() => setModalVisible(false)} />
+            <AddBtn showModal={showDebtModal} />
+            <CreateGroupModal />
         </View>
     );
 }
@@ -53,4 +61,12 @@ const styles = StyleSheet.create({
     }
 })
 
-export default DebtList;
+const mapDispatchToProps = {
+    addDebt, delDebt, showDebtModal, hideDebtModal,
+}
+
+const mapStateToProps = (state: any) => ({
+    debts: state.debt,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(DebtList);

@@ -1,0 +1,5 @@
+export const ADD_DEBT = 'DEBT/ADD_DEBT';
+export const DEL_DEBT = 'DEBT/DEL_DEBT';
+
+export const SHOW_MODAL_DEBTS = 'DEBT/SHOW_MODAL_DEBTS';
+export const HIDE_MODAL_DEBTS = 'DEBT/HIDE_MODAL_DEBTS';
