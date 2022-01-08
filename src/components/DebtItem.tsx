@@ -3,22 +3,31 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { TypeDebt } from '../types/types';
 import { DelBtn } from './DelBtn';
 import { showBtnDelete } from '../store/actions/visibleActions';
+import { delDebt } from '../store/actions/debtActions'
 import { connect } from 'react-redux';
 
 interface Props {
     debtGroup: TypeDebt,
     goto: (debtGroup: TypeDebt) => void,
     showBtnDelete: () => void,
+    delDebt: (debt: TypeDebt[]) => void,
+    debts: TypeDebt[],
+    visible: boolean,
 }
 
-export const DebtItem: React.FC<Props> = ({ debtGroup, goto, showBtnDelete }) => {
+export const DebtItem: React.FC<Props> = ({ debtGroup, goto, showBtnDelete, delDebt, visible, debts }) => {
 
     return (
         <TouchableOpacity onPress={() => goto(debtGroup)} onLongPress={showBtnDelete} >
             <View style={styles.itemDebt}>
                 <Text style={styles.title}>{debtGroup.name}</Text>
                 <Text style={styles.subtitle} >Кол-во участников: {debtGroup.people}</Text>
-                <DelBtn idDebtGroup={debtGroup.id} />
+                <DelBtn 
+                    idDebtGroup={debtGroup.id}
+                    debts={debts}
+                    delDebt={delDebt}
+                    visible={visible}
+                />
             </View>
         </TouchableOpacity>
     );
@@ -43,10 +52,12 @@ const styles = StyleSheet.create({
 })
 
 const mapDispatchToProps = {
-    showBtnDelete,
+    showBtnDelete, delDebt,
 }
 
 const mapStateToProps = (state: any) => ({
+    debts: state.debts,
+    visible: state.visible.visibleBtnDelete,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DebtItem);

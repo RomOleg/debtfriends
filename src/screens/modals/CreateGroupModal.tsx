@@ -20,9 +20,11 @@ export const CreateGroupModal: React.FC<Props> = ({ visible, hideDebtModal, addD
   const [name, setName] = useState('');
 
   const createGroup = (): void => {
+    if (!name.trim()) return;
+
     const group: TypeDebt[] = [{
       id:  new Date().getTime(),
-      name: 'test',
+      name: name,
       sum: 1000,
       people: 2
     }]

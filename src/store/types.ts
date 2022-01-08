@@ -11,6 +11,6 @@ export interface FriendActions {
 }
 
 export interface TypeVisible {
-    visibleModal?: boolean,
-    visibleBtnDelete?: boolean,
+    visibleModal: boolean,
+    visibleBtnDelete: boolean,
 }

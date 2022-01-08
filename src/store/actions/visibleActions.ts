@@ -1,4 +1,5 @@
-import { HIDE_BTN_DELETE, HIDE_MODAL_DEBTS, SHOW_BTN_DELETE, SHOW_MODAL_DEBTS } from "../consts"
+import { HIDE_BTN_DELETE, HIDE_MODAL_DEBTS, SHOW_BTN_DELETE, SHOW_MODAL_DEBTS } from "../consts";
+import { AppDispatch } from '../store';
 
 export const showDebtModal = () => {
     return {
@@ -16,11 +17,11 @@ export const showBtnDelete = () => {
     return {
         type: SHOW_BTN_DELETE,
     }
-    // return dispatch => {
+    // return async (dispatch: AppDispatch) => {
     //     dispatch({type: SHOW_BTN_DELETE});
     //     setTimeout(() => {
     //         dispatch(hideBtnDelete())
-    //     }, 1000);
+    //     }, 5000);
     // }
 }
 
