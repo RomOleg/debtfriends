@@ -5,13 +5,14 @@ import location from '../location/location';
 
 interface Props {
     onPress: () => void,
+    title: string,
 }
 
-export const BaseButton: React.FC<Props> = ({ onPress }) => {
+export const BaseButton: React.FC<Props> = ({ onPress, title }) => {
 
     return (
         <TouchableOpacity style={styles.container} onPress={onPress}>
-            <Text style={styles.text} >{location['ru'].AddNewGroup}</Text>
+            <Text style={styles.text} >{title}</Text>
         </TouchableOpacity>
     );
 }

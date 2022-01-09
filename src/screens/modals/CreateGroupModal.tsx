@@ -8,6 +8,7 @@ import location from '../../location/location';
 import { hideDebtModal } from '../../store/actions/visibleActions';
 import { addDebt } from '../../store/actions/debtActions';
 import { TypeDebt } from '../../types/types';
+import BaseTextInput from '../../components/BaseTextInput';
 
 interface Props {
   visible: boolean,
@@ -45,16 +46,15 @@ export const CreateGroupModal: React.FC<Props> = ({ visible, hideDebtModal, addD
             <VerticalLine />
             <View>
               <Text>Название события</Text>
-              <TextInput
-                style={styles.textInput}
+              <BaseTextInput
                 value={name}
-                onChangeText={(name) => setName(name)}
-                placeholder='Название события' 
+                onChangeText={setName}
+                placeholder='Название события'
               />
             </View>
           </View>
           <View style={{ }}>
-            <BaseButton onPress={createGroup} />
+            <BaseButton title={location['ru'].AddNewGroup} onPress={createGroup} />
           </View>
         </View>
         <CloseBtnModal closeModal={hideDebtModal} />
@@ -88,13 +88,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingBottom: 5,
   },
-  textInput: {
-    borderWidth: 1,
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    borderColor: '#ccc',
-    borderRadius: 10
-  }
 });
 
 const mapDispatchToProps = {
