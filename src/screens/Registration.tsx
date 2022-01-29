@@ -39,6 +39,7 @@ export const Registration: React.FC<Props> = ({  }) => {
                 }}
             />
             <BaseButton title={'Зарегистрироваться'} onPress={() => {}} />
+            <BaseButton title={'Назад'} onPress={() => navigation.goBack()} />
         </View>
     );
 }

@@ -9,3 +9,6 @@ export const DEL_FRIENDS = 'DEL_FRIENDS';
 
 export const SHOW_BTN_DELETE = 'SHOW_BTN_DELETE';
 export const HIDE_BTN_DELETE = 'HIDE_BTN_DELETE';
+
+export const SIGN_IN = 'SIGN_IN';
+export const SIGN_OUT = 'SIGN_OUT';

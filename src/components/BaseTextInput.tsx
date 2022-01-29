@@ -30,7 +30,9 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         paddingHorizontal: 10,
         borderColor: '#ccc',
-        borderRadius: 10
+        borderRadius: 10,
+        minWidth: '60%',
+        minHeight: 50
       }
 })
 

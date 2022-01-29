@@ -30,6 +30,7 @@ export const ResetPassword: React.FC<Props> = ({  }) => {
                 placeholder={'Введите ваш логин'}
             />
             <BaseButton title={'Сбросить пароль'} onPress={() => {}} />
+            <BaseButton title={'Назад'} onPress={() => navigation.goBack()} />
         </View>
     );
 }

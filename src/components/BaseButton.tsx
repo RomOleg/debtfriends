@@ -1,17 +1,22 @@
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleProp, StyleSheet, Text, TextStyle, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import location from '../location/location';
 
 interface Props {
     onPress: () => void,
     title: string,
+    btnStyle?: StyleProp<TextStyle>,
+    props?: TouchableOpacityProps,
 }
 
-export const BaseButton: React.FC<Props> = ({ onPress, title }) => {
+export const BaseButton: React.FC<Props> = ({ onPress, title, props, btnStyle }) => {
 
     return (
-        <TouchableOpacity style={styles.container} onPress={onPress}>
+        <TouchableOpacity
+            style={[styles.container, btnStyle]}
+            {...props}
+            onPress={onPress}>
             <Text style={styles.text} >{title}</Text>
         </TouchableOpacity>
     );
@@ -24,7 +29,8 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         backgroundColor: '#f87',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        minWidth: '60%',
     },
     text: {
         fontSize: 18,

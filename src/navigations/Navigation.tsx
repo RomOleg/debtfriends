@@ -9,9 +9,10 @@ const Navigation = () => {
 
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      {/* <Tab.Navigator>
         <Tab.Screen name="Debt" component={DebtNavigation} options={{ headerShown: false }} />
-      </Tab.Navigator>
+      </Tab.Navigator> */}
+        <DebtNavigation />
     </NavigationContainer>
   )
 }

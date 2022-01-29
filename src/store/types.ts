@@ -14,3 +14,8 @@ export interface TypeVisible {
     visibleModal: boolean,
     visibleBtnDelete: boolean,
 }
+
+export interface TypeAuthorization {
+    isSignIn: boolean,
+    token: string,
+}

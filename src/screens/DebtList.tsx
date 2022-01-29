@@ -1,30 +1,38 @@
-import React, { useState } from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native';
+import React from 'react'
+import { ScrollView, StyleSheet } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { DebtNavigationStackRouterParamList } from '../navigations/types';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { connect } from 'react-redux';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { DebtNavigationStackRouterParamList } from '../navigations/types';
 import AddBtn from '../components/AddBtn';
 import DebtItem from '../components/DebtItem';
 import { TypeDebt } from '../types/types';
 import CreateGroupModal from './modals/CreateGroupModal';
 import { showDebtModal } from '../store/actions/visibleActions';
+import { hideBtnDelete } from '../store/actions/visibleActions';
 
 interface Props {
     debts: TypeDebt[],
     showDebtModal: () => void,
+    hideBtnDelete: () => void,
+    visibleBtnDel: boolean,
 }
 
 type NavigationProps = NativeStackNavigationProp<DebtNavigationStackRouterParamList, 'DebtList'>;
 type RouteProps = RouteProp<DebtNavigationStackRouterParamList, 'DebtList'>;
 
-export const DebtList: React.FC<Props> = ({ debts, showDebtModal }) => {
+export const DebtList: React.FC<Props> = ({ debts, showDebtModal, hideBtnDelete, visibleBtnDel }) => {
 
     const navigation = useNavigation<NavigationProps>();
     const route = useRoute<RouteProps>();
 
     const goto = (debtGroup: TypeDebt): void => {
+        if (visibleBtnDel) {
+            hideBtnDelete();
+            return;
+        }    
         navigation.navigate('DebtInfo', { debtGroup });
     }
 
@@ -33,7 +41,7 @@ export const DebtList: React.FC<Props> = ({ debts, showDebtModal }) => {
     }
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <ScrollView>
                 {debts.length > 0 &&
                     debts.map(debtGroup =>
@@ -43,7 +51,7 @@ export const DebtList: React.FC<Props> = ({ debts, showDebtModal }) => {
             </ScrollView>
             <AddBtn showModal={showDebtModal} />
             <CreateGroupModal />
-        </View>
+        </SafeAreaView>
     );
 }
 
@@ -55,11 +63,12 @@ const styles = StyleSheet.create({
 })
 
 const mapDispatchToProps = {
-    showDebtModal,
+    showDebtModal, hideBtnDelete,
 }
 
 const mapStateToProps = (state: any) => ({
     debts: state.debts,
+    visibleBtnDel: state.visible.visibleBtnDelete,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DebtList);
