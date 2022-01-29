@@ -27,7 +27,8 @@ export const CreateGroupModal: React.FC<Props> = ({ visible, hideDebtModal, addD
       id:  new Date().getTime(),
       name: name,
       sum: 1000,
-      people: 2
+      people: 2,
+      debtInfo: []
     }]
 
     addDebt(group)

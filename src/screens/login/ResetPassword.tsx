@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { DebtNavigationStackRouterParamList } from '../navigations/types';
+import { DebtNavigationStackRouterParamList } from '../../navigations/types';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { connect } from 'react-redux';
 
-import BaseButton from '../components/BaseButton';
-import BaseTextInput from '../components/BaseTextInput';
+import BaseButton from '../../components/BaseButton';
+import BaseTextInput from '../../components/BaseTextInput';
 
 interface Props {
     

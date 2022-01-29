@@ -1,8 +1,8 @@
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { DebtNavigationStackRouterParamList } from '../types';
-import DebtInfo from '../../screens/DebtInfo';
-import GroupPeopleList from '../../screens/GroupPeopleList';
+import DebtInfo from '../../screens/debt/DebtInfo';
+import GroupPeopleList from '../../screens/debt/GroupPeopleList';
 
 const DebtInfoNavigation = () => {
   

@@ -3,6 +3,7 @@ export interface TypeDebt {
     name: string,
     sum: number,
     people: number,
+    debtInfo: TypeDebtInfo[],
 }
 
 export interface TypeFriend {

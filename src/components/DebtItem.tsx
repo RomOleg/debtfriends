@@ -21,7 +21,7 @@ export const DebtItem: React.FC<Props> = ({ debtGroup, goto, showBtnDelete, delD
         <TouchableOpacity onPress={() => goto(debtGroup)} onLongPress={showBtnDelete} >
             <View style={styles.itemDebt}>
                 <Text style={styles.title}>{debtGroup.name}</Text>
-                <Text style={styles.subtitle} >Кол-во участников: {debtGroup.people}</Text>
+                <Text style={styles.subtitle} >Кол-во участников: Вы + {debtGroup.debtInfo.length}</Text>
                 <DelBtn 
                     idDebtGroup={debtGroup.id}
                     debts={debts}

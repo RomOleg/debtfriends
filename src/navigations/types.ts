@@ -8,3 +8,12 @@ export type DebtNavigationStackRouterParamList = {
     Registration: undefined,
     ResetPassword: undefined,
 }
+
+export type SettingsNavigationStackRouterParamList = {
+    Main: undefined,
+}
+
+export type NavigationTabRouterParamList = {
+    Debts: DebtNavigationStackRouterParamList,
+    Settings: SettingsNavigationStackRouterParamList, 
+}
