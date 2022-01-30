@@ -7,7 +7,7 @@ export interface DebtActions {
 
 export interface FriendActions {
     type: string,
-    payload: TypeFriend[],
+    payload: TypeFriend,
 }
 
 export interface TypeVisible {

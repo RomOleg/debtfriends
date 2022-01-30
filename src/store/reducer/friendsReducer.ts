@@ -3,17 +3,17 @@ import { TypeFriend } from "../../types/types";
 import { FriendActions } from "../types";
 
 const initialState: TypeFriend[] = [
-    {name: 'Anna'},
-    {name: 'Vasia'},
-    {name: 'Petr'},
+    {id: '123', name: 'Зинаида Агапова'},
+    {id: '121', name: 'Никита Дуейн Платонов'},
+    {id: '122', name: 'Наруто Узумаки'},
 ];
 
 const friendsReducer = (state = initialState, action: FriendActions) => {
     switch (action.type) {
         case ADD_FRIENDS:
-            return [...state, ...action.payload];
+            return [...state, action.payload];
         case DEL_FRIENDS:
-            return [...action.payload];
+            return [...state, state.map(friend => friend.id !== action.payload.id)];
         default:
             return state;
     }
