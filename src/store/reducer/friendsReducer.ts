@@ -13,7 +13,7 @@ const friendsReducer = (state = initialState, action: FriendActions) => {
         case ADD_FRIENDS:
             return [...state, action.payload];
         case DEL_FRIENDS:
-            return [...state, state.map(friend => friend.id !== action.payload.id)];
+            return [...state, state.filter(friend => friend.id !== action.payload.id)];
         default:
             return state;
     }

@@ -43,7 +43,9 @@ export const DebtList: React.FC<Props> = ({
     navigation.navigate("DebtInfo", { debtGroup });
   };
 
-  const addGroup = (): void => {};
+  const addDebtGroup = (): void => {
+    navigation.navigate("AddDebtGroup");
+  };
 
   return (
     <View style={styles.container}>
@@ -54,7 +56,7 @@ export const DebtList: React.FC<Props> = ({
         )}
         keyExtractor={(item: TypeDebt) => item.id}
       />
-      <AddBtn showModal={showDebtModal} />
+      <AddBtn onPress={addDebtGroup} />
     </View>
   );
 };

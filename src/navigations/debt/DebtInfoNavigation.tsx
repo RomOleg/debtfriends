@@ -6,6 +6,7 @@ import GroupPeopleList from '../../screens/debt/GroupPeopleList';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import location from '../../location/location';
 import DebtList from '../../screens/debt/DebtList';
+import AddDebtGroup from '../../screens/debt/AddDebtGroup';
 
 const Stack =
     createNativeStackNavigator<DebtNavigationStackRouterParamList>();
@@ -21,6 +22,7 @@ const Stack =
       />
       <Stack.Screen name={"DebtInfo"} component={DebtInfo} />
       <Stack.Screen name={"GroupPeopleList"} component={GroupPeopleList} />
+      <Stack.Screen name={"AddDebtGroup"} component={AddDebtGroup} />
     </Stack.Navigator>
   );
 

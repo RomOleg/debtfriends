@@ -3,13 +3,13 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 interface Props {
-    showModal: () => void,
+    onPress: () => void,
 }
 
-export const AddBtn: React.FC<Props> = ({ showModal }) => {
+export const AddBtn: React.FC<Props> = ({ onPress }) => {
 
     return (
-        <TouchableOpacity style={styles.container} onPress={showModal}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
             <Icon name="plus"
                 size={25}
                 color="#fff" />

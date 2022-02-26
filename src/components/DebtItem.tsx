@@ -5,12 +5,13 @@ import { DelBtn } from "./DelBtn";
 import { showBtnDelete } from "../store/actions/visibleActions";
 import { delDebt } from "../store/actions/debtActions";
 import { connect } from "react-redux";
+import { RootState } from "../store/store";
 
 interface Props {
   debtGroup: TypeDebt;
   goto: (debtGroup: TypeDebt) => void;
   showBtnDelete: () => void;
-  delDebt: (debt: TypeDebt[]) => void;
+  delDebt: (debt: TypeDebt) => void;
   debts: TypeDebt[];
   visible: boolean;
 }
@@ -31,8 +32,8 @@ export const DebtItem: React.FC<Props> = ({
       <View style={styles.itemDebt}>
         <Text style={styles.title}>{debtGroup.name}</Text>
         <Text style={styles.subtitle}>
-          {debtGroup.friends.length >= 1
-            ? `Кол-во участников: ${1 + +debtGroup.friends.length}`
+          {debtGroup.debtInfo.length >= 1
+            ? `Кол-во участников: ${1 + +debtGroup.debtInfo.length}`
             : `Только Вы`}
         </Text>
         <DelBtn
@@ -69,7 +70,7 @@ const mapDispatchToProps = {
   delDebt,
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootState) => ({
   debts: state.debts,
   visible: state.visible.visibleBtnDelete,
 });

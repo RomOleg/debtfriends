@@ -5,7 +5,6 @@ export interface TypeDebt {
   id: string;
   name: string;
   sum: number;
-  friends: TypeFriend[];
   debtInfo: TypeDebtInfo[];
 }
 
@@ -17,6 +16,6 @@ export interface TypeFriend {
 export interface TypeDebtInfo {
   id: string;
   debtorName: string;
-  debtMe: string;
+  debtClaim: string;
   debtMy: string;
 }

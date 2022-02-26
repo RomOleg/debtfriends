@@ -7,15 +7,15 @@ import BaseButton from "./BaseButton";
 
 interface Props {
   friends: TypeFriend[];
-  selectedFriend: (selectedFriend: TypeFriend[]) => void,
-  hideModal: () => void;
+  setSelectedFriend: (selectedFriend: TypeFriend[]) => void,
+  selectedFriend: TypeFriend[],
 }
 
 interface CheckedFriend extends TypeFriend {
   checked: boolean;
 }
 
-export const ChoiseeFriendList: React.FC<Props> = ({ friends, selectedFriend, hideModal }) => {
+export const ChoiseeFriendList: React.FC<Props> = ({ friends, setSelectedFriend, selectedFriend }) => {
   const [listFriends, setListFriends] = useState<TypeFriend[]>(
     [] as TypeFriend[]
   );
@@ -29,15 +29,13 @@ export const ChoiseeFriendList: React.FC<Props> = ({ friends, selectedFriend, hi
     })
   );
 
-  const _selectionAll = (): void => {
-    selectedFriend(friends);
-    hideModal();
-  }
+  // const _selectionAll = (): void => {
+  //   selectedFriend(friends);
+  // }
 
-  const _selection = (): void => {
-    selectedFriend(listFriends);
-    hideModal();
-  }
+  // const _selection = (): void => {
+  //   selectedFriend(listFriends);
+  // }
 
   const _checkedFriend = (friend: CheckedFriend): void => {
     if (!friend.checked) {
@@ -50,7 +48,7 @@ export const ChoiseeFriendList: React.FC<Props> = ({ friends, selectedFriend, hi
         }
         return chfriend;
       }));
-      setListFriends([...listFriends, { id: friend.id, name: friend.name }]);
+      setSelectedFriend([...selectedFriend, { id: friend.id, name: friend.name }]);
     } else {
       setCheckFriend(checkFriend.map(chfriend => {
         if (chfriend.id === friend.id) {
@@ -61,7 +59,7 @@ export const ChoiseeFriendList: React.FC<Props> = ({ friends, selectedFriend, hi
         }
         return chfriend;
       }));
-      setListFriends(listFriends.filter((lfriend) => lfriend.id !== friend.id));
+      setSelectedFriend(selectedFriend.filter((sfriend) => sfriend.id !== friend.id));
     }
   };
 
@@ -78,10 +76,10 @@ export const ChoiseeFriendList: React.FC<Props> = ({ friends, selectedFriend, hi
           </View>
         ))}
       </View>
-      <View style={{ flex: 0.3 }}>
+      {/* <View style={{ flex: 0.3 }}>
         <BaseButton title="Добавить друзей" onPress={_selection} />
         <BaseButton title="Добавить всех" onPress={_selectionAll} />
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -91,7 +89,6 @@ const styles = StyleSheet.create({});
 const mapDispatchToProps = {};
 
 const mapStateToProps = (state: any) => ({
-  friends: state.friends,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChoiseeFriendList);
