@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import {
+  FlatList,
+  ListRenderItemInfo,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -12,6 +14,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { TypeDebt, TypeDebtInfo } from "../../types/types";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import PayDebtOffModal from "../modals/PayDebtOffModal";
+import { DebtItemItem } from "../../components/DebtItemInfo";
 
 interface Props {
   debtGroup: TypeDebt;
@@ -34,27 +37,11 @@ export const DebtInfo: React.FC<Props> = ({ debtGroup }) => {
     <View style={styles.container}>
       {route.params.debtGroup.debtInfo.length > 0 ? (
         <View>
-          {route.params.debtGroup.debtInfo.map((debtor) => (
-            <View key={debtor.id} style={styles.blockDebtor}>
-              <Text style={styles.textDebtor}>{debtor.debtorName}</Text>
-              <View style={styles.leftBlockDebtor}>
-                <Text style={[styles.textDebtorMy, styles.textDebtor]}>
-                  {debtor.debtMy}
-                </Text>
-                <Text style={[styles.textDebtorMe, styles.textDebtor]}>
-                  {debtor.debtMe}
-                </Text>
-                <TouchableOpacity onPress={() => setVisible(true)}>
-                  <Icon name="attach-money" size={40} color="red" />
-                </TouchableOpacity>
-              </View>
-            </View>
-          ))}
-          <PayDebtOffModal
-            visible={visible}
-            hideModal={() => setVisible(false)}
-            onChangeText={(value: string) => setPayDebtOff(value)}
-            value={payDebtOff}
+          <FlatList
+            data={route.params.debtGroup.debtInfo}
+            renderItem={({ item }: ListRenderItemInfo<TypeDebtInfo>) => (
+              <DebtItemItem debtInfo={item} />
+            )}
           />
         </View>
       ) : (

@@ -2,10 +2,10 @@ import { ReactFragment, ReactPortal } from "react";
 import { ReactChild } from "react";
 
 export interface TypeDebt {
-  id: number;
+  id: string;
   name: string;
   sum: number;
-  people: number;
+  friends: TypeFriend[];
   debtInfo: TypeDebtInfo[];
 }
 

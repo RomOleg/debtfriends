@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { FlatList, ListRenderItem, ListRenderItemInfo, ScrollView, StyleSheet, View } from "react-native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import { connect } from "react-redux";
@@ -47,14 +47,14 @@ export const DebtList: React.FC<Props> = ({
 
   return (
     <View style={styles.container}>
-      <ScrollView>
-        {debts.length > 0 &&
-          debts.map((debtGroup) => (
-            <DebtItem key={debtGroup.id} debtGroup={debtGroup} goto={goto} />
-          ))}
-      </ScrollView>
+      <FlatList
+        data={debts}
+        renderItem={({ item }: ListRenderItemInfo<TypeDebt>) => (
+          <DebtItem debtGroup={item} goto={goto} />
+        )}
+        keyExtractor={(item: TypeDebt) => item.id}
+      />
       <AddBtn showModal={showDebtModal} />
-      <CreateGroupModal />
     </View>
   );
 };

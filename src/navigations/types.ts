@@ -7,6 +7,7 @@ export type DebtNavigationStackRouterParamList = {
     Login: undefined,
     Registration: undefined,
     ResetPassword: undefined,
+    AddDebtGroup: undefined,
 }
 
 export type SettingsNavigationStackRouterParamList = {

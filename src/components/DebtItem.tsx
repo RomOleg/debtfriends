@@ -31,8 +31,8 @@ export const DebtItem: React.FC<Props> = ({
       <View style={styles.itemDebt}>
         <Text style={styles.title}>{debtGroup.name}</Text>
         <Text style={styles.subtitle}>
-          {debtGroup.debtInfo.length >= 1
-            ? `Кол-во участников: Вы + ${debtGroup.debtInfo.length}`
+          {debtGroup.friends.length >= 1
+            ? `Кол-во участников: ${1 + +debtGroup.friends.length}`
             : `Только Вы`}
         </Text>
         <DelBtn

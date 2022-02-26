@@ -3,17 +3,26 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { DebtNavigationStackRouterParamList } from '../types';
 import DebtInfo from '../../screens/debt/DebtInfo';
 import GroupPeopleList from '../../screens/debt/GroupPeopleList';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import location from '../../location/location';
+import DebtList from '../../screens/debt/DebtList';
 
-const DebtInfoNavigation = () => {
-  
-  const Tab = createMaterialTopTabNavigator<DebtNavigationStackRouterParamList>();
+const Stack =
+    createNativeStackNavigator<DebtNavigationStackRouterParamList>();
 
-  return (
-      <Tab.Navigator>
-        <Tab.Screen name={"DebtInfo"} component = { DebtInfo } />
-        <Tab.Screen name={"GroupPeopleList"} component = { GroupPeopleList } />
-      </Tab.Navigator>
-    )
-}
+  const optionsDebtList = {};
+
+  const DebtInfoNavigation: React.FC = ({}) => (
+    <Stack.Navigator>
+      <Stack.Screen
+        name={"DebtList"}
+        component={DebtList}
+        options={{ title: location["ru"].DebtList }}
+      />
+      <Stack.Screen name={"DebtInfo"} component={DebtInfo} />
+      <Stack.Screen name={"GroupPeopleList"} component={GroupPeopleList} />
+    </Stack.Navigator>
+  );
+
 
 export default DebtInfoNavigation;

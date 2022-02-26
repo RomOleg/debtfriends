@@ -4,31 +4,34 @@ import { DebtActions } from "../types";
 
 const initialState: TypeDebt[] = [
   {
-    id: 1,
+    id: "1",
     name: "не туса",
     sum: 1000,
-    people: 3,
+    friends: [
+      { id: "1", name: "Gala" },
+      { id: "2", name: "Naomi" },
+      { id: "3", name: "Piter" },
+      { id: "4", name: "Saitama" },
+    ],
     debtInfo: [
       { id: "3", debtorName: "1234", debtMy: "0", debtMe: "0" },
       { id: "4", debtorName: "1234", debtMy: "0", debtMe: "0" },
     ],
   },
   {
-    id: 2,
+    id: "2",
     name: "супер пати",
     sum: 1000,
-    people: 10,
+    friends: [
+      { id: "1", name: "Naruto" },
+      { id: "2", name: "Sarura" },
+      { id: "3", name: "Saske" },
+    ],
     debtInfo: [
-      { id: "1", debtorName: "Anna", debtMy: "12", debtMe: "666" },
-      { id: "3", debtorName: "Ivan", debtMy: "0", debtMe: "212" },
+      { id: "3", debtorName: "1234", debtMy: "0", debtMe: "0" },
+      { id: "4", debtorName: "1234", debtMy: "0", debtMe: "0" },
     ],
   },
-  // { id: 3, name: 'group3', sum: 1000, people: 3 },
-  // { id: 4, name: 'group4', sum: 1000, people: 3 },
-  // { id: 5, name: 'group5', sum: 1000, people: 3 },
-  // { id: 6, name: 'group6', sum: 1000, people: 3 },
-  // { id: 7, name: 'group7', sum: 1000, people: 3 },
-  // { id: 8, name: 'group8', sum: 1000, people: 3 },
 ];
 
 const debtReducer = (state = initialState, action: DebtActions) => {

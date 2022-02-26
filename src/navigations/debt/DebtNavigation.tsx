@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import Login from "../../screens/login/Login";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Settings from "../../screens/settings/Settings";
+import DebtInfoNavigation from "./DebtInfoNavigation";
 
 interface Props {
   isSignIn: boolean;
@@ -25,18 +26,6 @@ const DebtNavigation: React.FC<Props> = ({ isSignIn }) => {
 
   const optionsDebtList = {};
 
-  const DebtNavigation: React.FC = ({}) => (
-    <Stack.Navigator>
-      <Stack.Screen
-        name={"DebtList"}
-        component={DebtList}
-        options={{ title: location["ru"].DebtList }}
-      />
-      <Stack.Screen name={"DebtInfo"} component={DebtInfo} />
-      <Stack.Screen name={"GroupPeopleList"} component={GroupPeopleList} />
-    </Stack.Navigator>
-  );
-
   const Tab = createBottomTabNavigator<NavigationTabRouterParamList>();
 
   {
@@ -44,7 +33,7 @@ const DebtNavigation: React.FC<Props> = ({ isSignIn }) => {
       <Tab.Navigator>
         <Tab.Screen
           name={"Debts"}
-          component={DebtNavigation}
+          component={DebtInfoNavigation}
           options={{ headerShown: false }}
         />
         <Tab.Screen

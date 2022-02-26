@@ -5,7 +5,7 @@ import { TypeDebt } from '../types/types';
 
 interface Props {
     delDebt: (debt: TypeDebt[]) => void,
-    idDebtGroup: number,
+    idDebtGroup: string,
     debts: TypeDebt[],
     visible: boolean,
 }
